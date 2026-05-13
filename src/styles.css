@@ -1,0 +1,165 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import "leaflet/dist/leaflet.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-safe: var(--safe);
+  --color-moderate: var(--moderate);
+  --color-risky: var(--risky);
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-emerald: var(--accent-emerald);
+}
+
+:root {
+  --radius: 0.85rem;
+  /* Gamyam-inspired light theme: TSRTC green primary, white surfaces, red accent */
+  --background: oklch(0.985 0.005 150);
+  --foreground: oklch(0.22 0.02 160);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.02 160);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.02 160);
+  /* TSRTC green ~ #00A651 */
+  --primary: oklch(0.62 0.17 152);
+  --primary-foreground: oklch(0.99 0.005 150);
+  --secondary: oklch(0.96 0.012 150);
+  --secondary-foreground: oklch(0.28 0.02 160);
+  --muted: oklch(0.95 0.008 150);
+  --muted-foreground: oklch(0.5 0.015 160);
+  /* Red accent like the Gamyam bus pin ~ #E63946 */
+  --accent: oklch(0.62 0.21 25);
+  --accent-foreground: oklch(0.99 0.005 150);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0.005 150);
+  --border: oklch(0.9 0.01 150);
+  --input: oklch(0.98 0.005 150);
+  --ring: oklch(0.62 0.17 152);
+
+  --safe: oklch(0.62 0.17 152);
+  --moderate: oklch(0.78 0.16 80);
+  --risky: oklch(0.6 0.22 25);
+  --accent-cyan: oklch(0.62 0.17 152);
+  --accent-emerald: oklch(0.55 0.16 152);
+
+  /* Gamyam-style green gradient header */
+  --gradient-hero: linear-gradient(135deg, oklch(0.62 0.17 152) 0%, oklch(0.55 0.16 155) 100%);
+  --gradient-card: linear-gradient(160deg, oklch(1 0 0) 0%, oklch(0.98 0.008 150) 100%);
+  --shadow-glow: 0 6px 20px -6px oklch(0.62 0.17 152 / 45%);
+  --shadow-card: 0 4px 18px -8px oklch(0.3 0.04 160 / 25%);
+}
+
+.dark {
+  /* Keep the same light palette — Gamyam is a light app */
+  --background: oklch(0.985 0.005 150);
+  --foreground: oklch(0.22 0.02 160);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.02 160);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.02 160);
+  --primary: oklch(0.62 0.17 152);
+  --primary-foreground: oklch(0.99 0.005 150);
+  --secondary: oklch(0.96 0.012 150);
+  --secondary-foreground: oklch(0.28 0.02 160);
+  --muted: oklch(0.95 0.008 150);
+  --muted-foreground: oklch(0.5 0.015 160);
+  --accent: oklch(0.62 0.21 25);
+  --accent-foreground: oklch(0.99 0.005 150);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0.005 150);
+  --border: oklch(0.9 0.01 150);
+  --input: oklch(0.98 0.005 150);
+  --ring: oklch(0.62 0.17 152);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html, body, #root {
+    height: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+
+  /* Leaflet — light, default OSM tiles */
+  .leaflet-container {
+    background: oklch(0.95 0.01 150);
+    font-family: inherit;
+  }
+  .map-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  .saferoute-map-container {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  .fixed-ui-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2000;
+    pointer-events: none;
+  }
+  .leaflet-control-attribution {
+    background: oklch(1 0 0 / 85%) !important;
+    color: oklch(0.4 0.01 160) !important;
+  }
+  .leaflet-control-attribution a {
+    color: oklch(0.62 0.17 152) !important;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-hero { background: var(--gradient-hero); }
+  .bg-gradient-card { background: var(--gradient-card); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 oklch(0.72 0.17 200 / 60%); }
+    70% { box-shadow: 0 0 0 18px oklch(0.72 0.17 200 / 0%); }
+    100% { box-shadow: 0 0 0 0 oklch(0.72 0.17 200 / 0%); }
+  }
+  .animate-pulse-ring { animation: pulse-ring 1.6s infinite; }
+
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up { animation: fade-in-up 0.4s ease-out both; }
+}
