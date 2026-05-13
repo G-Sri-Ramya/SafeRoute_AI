@@ -32,6 +32,18 @@ The frontend is built on a streamlined architecture prioritizing performance and
 * `src/lib/voice.ts`: Contains the speech recognition logic, ensuring optimal configuration for single-shot commands alongside advanced regex parsing for natural language location extraction.
 
 ---
+⚙️ Tech Stack
+- React
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Leaflet
+- OpenStreetMap
+- OSRM Routing API
+- Browser Geolocation API
+- Speech Synthesis
+
+---
 
 ## 🚀 Getting Started
 
